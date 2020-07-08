@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            background-color: burlywood;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        input {
+            outline: none;
+            border: 1px solid #cccccc;
+            height: 35px;
+            width: 500px;
+            padding-left: 15px;
+
+        }
+
+        .head {
+            width: 300px;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        #add {
+            width: 35px;
+            height: 35px;
+            appearance: none;
+            border: none;
+            outline: none;
+        }
+
+        .main {
+            width: 500px;
+            background-color: #ffffff;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 20px 45px 20px 65px;
+            color: green;
+        }
+
+        .content li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            height: 35px;
+        }
+
+        .content .delete {
+            background-color: #999999;
+            width: 35px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            color: #f1f1f1;
+        }
+
+        .ckb {
+            width: 25px;
+            height: 25px;
+            appearance: none;
+            border: none;
+            outline: none;
+        }
+
+        .del_line {
+            text-decoration: line-through;
+            color: #c1c1c1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="head">
+            <input id='ipt' type="text" placeholder="新增内容">
+            <div><button id="add">新增</button></div>
+        </div>
+        <div class="content">
+            <ul>
+                <li>
+                    <input type="checkbox" class='ckb' class='deleteLine'>
+                    <span>内容</span>
+                    <div class="delete">删除</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var ipt = document.querySelector('#ipt');
+        var addBtn = document.querySelector('#add');
+        var ulNode = document.querySelector('.content>ul');
+        deleteItem()
+        lineCont()
+
+        addBtn.onclick = function () {
+            var val = ipt.value;
+            var liNode = document.createElement('li');
+            var spanNode = document.createElement('span');
+            var divNode = document.createElement('div');
+            var ckbNode = document.createElement('input')
+
+            divNode.innerHTML = '删除'
+            divNode.className = 'delete'
+            spanNode.innerHTML = val
+            ckbNode.type = 'checkbox'
+            ckbNode.className = 'ckb'
+
+            liNode.appendChild(ckbNode)
+            liNode.appendChild(spanNode)
+            liNode.appendChild(divNode)
+
+            ulNode.appendChild(liNode)
+            ipt.value = ''
+            deleteItem()
+            lineCont()
+        }
+
+
+        function deleteItem() {
+            var deleteNode = document.querySelectorAll('.delete')
+            for (var i = 0; i < deleteNode.length; i++) {
+                (function () {
+                    var x = i;
+                    deleteNode[x].onclick = function () {
+                        var parent = deleteNode[x].parentNode
+                        parent.remove();
+                    }
+                })()
+            }
+        }
+
+        function lineCont() {
+            var lineNode = document.querySelectorAll('li>.ckb')
+            var spNode = document.querySelectorAll('li>span')
+            for (var i = 0; i < lineNode.length; i++) {
+                (function () {
+                    var flag = false
+                    var x = i;
+
+                    lineNode[x].onclick = function () {
+                        // console.log('0000')
+                        flag = !flag
+                        var nextNode = lineNode[x].nextElementSibling
+                        if (flag) {
+                            nextNode.className = 'del_line'
+                        }
+                        else {
+                            nextNode.className = ''
+                        }
+                    }
+                })()
+            }
+        }
+
+
+        ipt.onkeyup = function (e) {
+            if (e.keyCode === 13) {
+                var val = ipt.value;
+                var liNode = document.createElement('li');
+                var spanNode = document.createElement('span');
+                var divNode = document.createElement('div');
+                var ckbNode = document.createElement('input')
+
+                divNode.innerHTML = '删除'
+                divNode.className = 'delete'
+                spanNode.innerHTML = val
+                ckbNode.type = 'checkbox'
+                ckbNode.className = 'ckb'
+
+                liNode.appendChild(ckbNode)
+                liNode.appendChild(spanNode)
+                liNode.appendChild(divNode)
+
+                ulNode.appendChild(liNode)
+                ipt.value = ''
+                deleteItem()
+                lineCont()
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

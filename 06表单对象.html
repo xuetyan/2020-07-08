@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="" id="">
+        <input type="checkbox">
+        <button type="submit">提交</button>
+        <select name="" id="">
+            <option value="01">大毛</option>
+            <option value="02">二毛</option>
+            <option value="03" selected>三毛</option>
+            <option value="04">小明</option>
+        </select>
+    </form>
+
+
+    <script>
+        var formObject = document.querySelector('form')
+        console.dir(formObject)
+        for (var i = 0; i < formObject.length; i++) {
+            console.log(formObject[i])
+        }
+        formObject[1].checked = true
+        formObject[0].focus()
+
+        //问题：select option 选择的是哪一个
+        var select = formObject[3]
+
+        for (var i = 0; i < formObject[3].length; i++) {
+            if (select[i].selected) {
+                console.log(select[i].value)
+            }
+        }
+
+        //封装方法
+        //返回select option选择的内容
+        console.log(select.nodeType)
+        function selectContent(select) {
+            // if(select.nodeType != 1){
+            //     throw new Error('error')
+            // }
+            for (var i = 0; i < formObject[3].length; i++) {
+                if (select[i].selected) {
+                    console.log(select[i].value)
+                }
+            }
+        }
+        selectContent(select)
+        // selectContent()
+    </script>
+</body>
+
+</html>

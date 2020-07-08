@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 onclick="this.innerHTML='那没事了'">有事？</h1>
+    <h2 onclick="jiLe(this)">不会吧不会吧</h2>
+
+    <h3 class="milk">来一瓶牛奶吧</h3>
+    <h3 class="Jiu">啾啾</h3>
+
+    <script>
+        //事件：作用：实现用户和浏览器的交互
+        //事件分类：键盘 鼠标 滚动 浏览器窗口 表单 等
+        //交互：一行为 一响应 用户做出行为 浏览器反映对应效果
+        //核心知识点：事件对象  事件机制  事件流  事件句柄    监听事件    等
+
+
+        function jiLe(a) {
+            a.innerHTML = '急了急了'
+        }
+
+
+
+        var milk = document.querySelector('.milk')
+        //点击事件
+        milk.onclick = function () {
+            //事件处理函数：浏览器对行为做出的响应
+            this.innerHTML = '两块五，谢谢'
+        }
+
+        var Jiu=document.querySelector('.Jiu')
+        //ie 不支持
+        Jiu.addEventListener('click',function(){
+            this.innerHTML='可爱~ 打钱！'
+        })
+
+
+        //当页面刚启动的时候，一般进行初始化操作
+        window.onload = function () {
+            //事件处理函数
+            alert('欢迎使用，页面初始化渲染完成')
+        }
+    </script>
+</body>
+
+</html>

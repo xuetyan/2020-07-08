@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+
+        .disappear#wrap {
+            opacity: 0;
+            transition-duration: 4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap"></div>
+    <script>
+        //监听鼠标在整个页面中移动范围
+        // document.onmousemove=function(){
+        //     alert('不许动')
+        // }
+
+        var wrap = document.getElementById('wrap')
+        // wrap.onmousemove=function(){
+        //     console.log('春风不改,绿水长流')
+        // }
+
+        wrap.onmouseenter = function () {
+            console.log('江湖路远')
+            this.className = 'disappear'
+        }
+        wrap.onmouseleave = function () {
+            console.log('有缘再见')
+        }
+        wrap.onmousedown = function () {
+            console.log('别打了别打了')
+        }
+
+
+        //键盘事件
+        wrap.onkeydown = function () {
+            console.log('钉钉')
+        }
+        wrap.onkeyup = function () {
+            console.log('打卡啦')
+        }
+
+    </script>
+</body>
+
+</html>

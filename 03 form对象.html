@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox">
+    <span>内容</span>
+    <script>
+        //form  表单 在任何情况下都是特殊的
+        //h5默认属性
+        //css清空样式
+        //js 默认行为 锅中数据格式
+
+        //表单提交  提交    获取焦点    失去表单    改变    监听输入
+
+        //两种js中用什么方式 直到用户是否勾选
+        var check = document.querySelector('input[type=checkbox]')
+        //check.checked 判断是否被勾选
+        console.log(check.checked)
+
+        //如何直到 勾选后：选择的内容是什么
+        console.log(check.value)    //代表：'这是我选的内容'        
+    </script>a
+</body>
+
+</html>

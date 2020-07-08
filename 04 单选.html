@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>what's you name</h1>
+    </div>
+    <form action="">
+        <div>
+            <input type="radio" name='brother' checked value="大毛">大毛
+        </div>
+        <div>
+            <input type="radio" name='brother' value='二毛'>二毛
+        </div>
+        <div>
+            <input type="radio" name='brother' value='三毛'>三毛
+        </div>
+        <div>
+            <input type="radio" name='brother' value='小明'>小明
+        </div>
+    </form>
+
+    <script>
+        var ipt = document.querySelectorAll('form>div>input')
+        var ck = null
+        console.log(ipt)
+        for (var i = 0; i < ipt.length; i++) {
+            if (ipt[i].checked) {
+                console.log(ipt[i])
+                ck = ipt[i]
+                break
+            }
+        }
+        console.log(ck.value)
+    </script>
+
+</body>
+
+</html>
